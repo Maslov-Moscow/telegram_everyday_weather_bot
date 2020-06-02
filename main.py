@@ -1,11 +1,11 @@
 import requests
 import telegram
 import os
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
+from datetime import datetime, date, time
+# from datetime import datetime
 
-from datetime import datetime
-
-# load_dotenv()  # delete on deploy
+load_dotenv()  # delete on deploy
 
 TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
 CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
@@ -34,7 +34,7 @@ def parse_weather():
     description = response.json()['daily'][1]['weather'][0]['description']
 
     date = int(response.json()['daily'][1]['dt'])
-    value = datetime.datetime.fromtimestamp(date)
+    value = datetime.fromtimestamp(date)
     date_r = value.strftime('%d-%m-%Y')
 
     message = f'{date_r}\nУтром:{int(morning)}С°\nВечером:{int(evening)}С°\nНочью:{int(night)}С°\nПогода:{description}'
@@ -45,9 +45,7 @@ def timer():
     # response = requests.get('http://worldtimeapi.org/api/timezone/Europe/Moscow')
     # utctime = response.json()['utc_datetime']
     utctime = datetime.now()
-    print(f'Бот запущен\n{utctime}')
-
-    pass
+    return (f'Бот запущен\n{utctime}')
 
 
 if __name__ == '__main__':
