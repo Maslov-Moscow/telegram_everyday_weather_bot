@@ -1,11 +1,11 @@
 import requests
 import telegram
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from datetime import datetime, date, time
 # from datetime import datetime
 
-load_dotenv()  # delete on deploy
+# load_dotenv()  # delete on deploy
 
 TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
 CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
